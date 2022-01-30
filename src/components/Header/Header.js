@@ -1,10 +1,16 @@
 import classes from "./Header.module.css";
 
-const Header = () => {
+const Header = ({ onShow }) => {
+  const clickHandler = () => {
+    onShow();
+  };
+
   return (
     <header className={classes.header}>
       <h1 className={classes.header__title}>React Todo</h1>
-      <button className={classes.header__button}>Create Task</button>
+      <button onClick={clickHandler} className={classes.header__button}>
+        Create Task
+      </button>
     </header>
   );
 };

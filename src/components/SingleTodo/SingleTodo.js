@@ -1,6 +1,7 @@
 import TrashIcon from "../Utils/Icons/TrashIcon";
 import EditIcon from "../Utils/Icons/EditIcon";
 
+import classes from "./SingleTodo.module.css";
 const colors = [
   {
     primaryColor: "#5D93E1",
@@ -29,16 +30,19 @@ const SingleTodo = ({ taskObj, index }) => {
   console.log(selectedColor);
 
   return (
-    <li className="todo" style={{ borderTopColor: selectedColor.primaryColor }}>
+    <li
+      className={classes.todo}
+      style={{ borderTopColor: selectedColor.primaryColor }}
+    >
       <h3
-        className="todo__title"
+        className={classes.todo__title}
         style={{ backgroundColor: selectedColor.secondaryColor }}
       >
         {taskObj.title}
       </h3>
-      <p className="todo__description">{taskObj.description}</p>
+      <p className={classes.todo__description}>{taskObj.description}</p>
       <div
-        className="todo__actions"
+        className={classes.todo__actions}
         style={{ color: selectedColor.primaryColor }}
       >
         <span>

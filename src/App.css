@@ -29,38 +29,3 @@ button {
   max-width: 1300px;
   margin: 0 auto;
 }
-
-.todo {
-  display: flex;
-  flex-direction: column;
-  height: 12rem;
-  padding: 1rem;
-  border-top: 6px solid;
-  background-color: #fff;
-  box-shadow: 5px 5px 20px 2px #ececec;
-}
-
-.todo__title {
-  display: inline-block;
-  width: max-content;
-  border-radius: 8px;
-  padding: 0.25rem 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 2px 2px 8px #ececec;
-}
-
-.todo__description {
-  flex: 1;
-  font-size: 0.875rem;
-}
-
-.todo__actions {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.todo__actions > span {
-  display: inline-block;
-  width: 20px;
-  cursor: pointer;
-}
