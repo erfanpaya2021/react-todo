@@ -1,4 +1,5 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
 
 import Header from "./components/Header/Header";
 import TodoList from "./components/TodoList/TodoList";
@@ -6,21 +7,13 @@ import CreateTodo from "./components/CreateTodo/CreateTodo";
 import "./App.css";
 
 function App() {
-  const [createTodoShown, setCreateTodoShown] = useState(false);
-
-  const createTodoShowHandler = () => {
-    setCreateTodoShown(true);
-  };
-
-  const createTodoHideHandler = () => {
-    setCreateTodoShown(false);
-  };
+  const createTask = useSelector((state) => state.ui.createTask);
 
   return (
     <Fragment>
-      <Header onShow={createTodoShowHandler} />
+      <Header />
       <TodoList />
-      {createTodoShown && <CreateTodo onHide={createTodoHideHandler} />}
+      {createTask && <CreateTodo />}
     </Fragment>
   );
 }

@@ -1,8 +1,12 @@
+import { useDispatch } from "react-redux";
+
+import { showModal } from "../../store/ui-slice";
 import classes from "./Header.module.css";
 
 const Header = ({ onShow }) => {
+  const dispatch = useDispatch();
   const clickHandler = () => {
-    onShow();
+    dispatch(showModal("createTask"));
   };
 
   return (

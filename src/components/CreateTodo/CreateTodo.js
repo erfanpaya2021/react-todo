@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { nanoid } from "nanoid";
+
+import { hideModal } from "../../store/ui-slice";
+import { addTodo } from "../../store/todos-slice";
 import Modal from "../Utils/Modal/Modal";
 import CloseIcon from "../Utils/Icons/CloseIcon";
 import classes from "./CreateTodo.module.css";
 
-const CreateTodo = ({ onHide }) => {
+const CreateTodo = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -20,13 +27,24 @@ const CreateTodo = ({ onHide }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    onHide();
+    const tempObj = {
+      id: nanoid(),
+      ...formData,
+    };
+
+    dispatch(addTodo(tempObj));
+    formData.title = "";
+    formData.description = "";
+    dispatch(hideModal("createTask"));
   };
 
   return (
     <Modal>
       <div className={classes.create}>
-        <span onClick={() => onHide()} className={classes.create__close}>
+        <span
+          onClick={() => dispatch(hideModal("createTask"))}
+          className={classes.create__close}
+        >
           <CloseIcon />
         </span>
         <h3 className={classes.create__title}>Create Task</h3>
@@ -34,7 +52,7 @@ const CreateTodo = ({ onHide }) => {
           <div className={classes.input}>
             <label
               htmlFor="title"
-              className={formData.title.trim() !== "" && "filled"}
+              className={formData.title.trim() !== "" ? classes.filled : ""}
             >
               Title
             </label>
@@ -50,7 +68,9 @@ const CreateTodo = ({ onHide }) => {
           <div className={classes.input}>
             <label
               htmlFor="description"
-              className={formData.description.trim() !== "" && "filled"}
+              className={
+                formData.description.trim() !== "" ? classes.filled : ""
+              }
             >
               Description
             </label>
