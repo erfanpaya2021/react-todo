@@ -1,9 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { deleteTodo } from "../../store/todos-slice";
+import { showModal } from "../../store/ui-slice";
+import { deleteTodo, setSelectedTodo } from "../../store/todos-slice";
 import TrashIcon from "../Utils/Icons/TrashIcon";
 import EditIcon from "../Utils/Icons/EditIcon";
+
 import classes from "./SingleTodo.module.css";
+import { notifyDelete } from "../Utils/Toast/Toast";
 import { colors } from "./colors";
 
 const SingleTodo = ({ taskObj, index }) => {
@@ -12,6 +15,12 @@ const SingleTodo = ({ taskObj, index }) => {
 
   const deleteTodoHandler = () => {
     dispatch(deleteTodo(taskObj.id));
+    notifyDelete();
+  };
+
+  const editModalHandler = () => {
+    dispatch(showModal("editTask"));
+    dispatch(setSelectedTodo(taskObj));
   };
 
   return (
@@ -30,7 +39,7 @@ const SingleTodo = ({ taskObj, index }) => {
         className={classes.todo__actions}
         style={{ color: selectedColor.primaryColor }}
       >
-        <span>
+        <span onClick={editModalHandler}>
           <EditIcon />
         </span>
         <span onClick={deleteTodoHandler}>

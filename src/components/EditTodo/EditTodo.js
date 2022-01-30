@@ -1,42 +1,37 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { nanoid } from "nanoid";
+import { useDispatch, useSelector } from "react-redux";
 import useForm from "../../hooks/useForm";
 
 import { hideModal } from "../../store/ui-slice";
-import { addTodo } from "../../store/todos-slice";
+import { editTodo } from "../../store/todos-slice";
 import Modal from "../Utils/Modal/Modal";
 import CloseIcon from "../Utils/Icons/CloseIcon";
-import classes from "./CreateTodo.module.css";
+import classes from "./EditTodo.module.css";
 
-const CreateTodo = () => {
+const EditTodo = () => {
+  const taskObj = useSelector((state) => state.todos.selectedTodo);
   const dispatch = useDispatch();
 
   const { formData, blurHandler, changeHandler, submitHandler } = useForm(
-    {
-      id: nanoid(),
-      title: "",
-      description: "",
-    },
-    addTodo,
-    "createTask",
+    taskObj,
+    editTodo,
+    "editTask",
   );
 
   return (
     <Modal>
-      <div className={classes.create}>
+      <div className={classes.edit}>
         <span
-          onClick={() => dispatch(hideModal("createTask"))}
-          className={classes.create__close}
+          onClick={() => dispatch(hideModal("editTask"))}
+          className={classes.edit__close}
         >
           <CloseIcon />
         </span>
-        <h3 className={classes.create__title}>Create Task</h3>
-        <form onSubmit={submitHandler} className={classes.create__form}>
+        <h3 className={classes.edit__title}>Edit Task</h3>
+        <form onSubmit={submitHandler} className={classes.edit__form}>
           <div className={classes.input}>
             <label
               htmlFor="title"
-              className={formData.title.trim() !== "" ? classes.filled : ""}
+              className={formData?.title.trim() !== "" ? classes.filled : ""}
             >
               Title
             </label>
@@ -54,7 +49,7 @@ const CreateTodo = () => {
             <label
               htmlFor="description"
               className={
-                formData.description.trim() !== "" ? classes.filled : ""
+                formData?.description.trim() !== "" ? classes.filled : ""
               }
             >
               Description
@@ -69,8 +64,8 @@ const CreateTodo = () => {
             />
             <div></div>
           </div>
-          <div className={classes.create__actions}>
-            <button type="submit">Create</button>
+          <div className={classes.edit__actions}>
+            <button type="submit">Update</button>
           </div>
         </form>
       </div>
@@ -78,4 +73,4 @@ const CreateTodo = () => {
   );
 };
 
-export default CreateTodo;
+export default EditTodo;

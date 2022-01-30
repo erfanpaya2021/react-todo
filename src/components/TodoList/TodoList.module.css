@@ -1,7 +1,14 @@
 /* Todo List */
 .todolist {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 25rem));
   gap: 3rem;
   margin: 3rem 0;
+}
+
+@media (min-width: 700px) {
+  .todolist {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 18rem));
+  }
 }

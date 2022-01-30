@@ -1,10 +1,10 @@
-.create {
+.edit {
   position: relative;
   padding: 2rem;
   min-height: 13rem;
 }
 
-.create__close {
+.edit__close {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -14,32 +14,32 @@
   cursor: pointer;
 }
 
-.create__close:active {
+.edit__close:active {
   transform: scale(0.92);
 }
 
-.create__title {
+.edit__title {
   font-size: 1.25rem;
   margin: 1rem 0 0;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #ccc;
 }
 
-.create__form {
+.edit__form {
   display: flex;
   flex-direction: column;
 }
 
-.create__actions {
+.edit__actions {
   padding-top: 3rem;
 }
 
-.create__actions button {
+.edit__actions button {
   padding: 0.5rem 1.25rem;
   background-color: #00bbbb;
 }
 
-.create__actions button:active {
+.edit__actions button:active {
   background-color: rgb(33, 245, 245);
 }
 

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: { createTask: false },
+  initialState: { createTask: false, editTask: false },
   reducers: {
     showModal(state, actions) {
       state[actions.payload] = true;
