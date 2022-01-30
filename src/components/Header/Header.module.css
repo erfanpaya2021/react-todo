@@ -1,0 +1,22 @@
+/* HEADER */
+.header {
+  background-color: rgb(166, 253, 253);
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.header__title {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.header__button {
+  padding: 0.5rem 1rem;
+  background-color: rgb(0, 187, 187);
+  transition: 0.2s ease-in-out;
+}
+
+.header__button:active {
+  background-color: rgb(33, 245, 245);
+}
