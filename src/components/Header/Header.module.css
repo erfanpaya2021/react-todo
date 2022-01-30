@@ -6,7 +6,7 @@
 }
 
 .header__title {
-  font-size: 3rem;
+  font-size: clamp(1.6rem, 3vw, 3rem);
   font-weight: 400;
   margin-bottom: 1rem;
 }

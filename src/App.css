@@ -22,3 +22,10 @@ button {
   border: 0;
   cursor: pointer;
 }
+
+/* Util */
+.container {
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
