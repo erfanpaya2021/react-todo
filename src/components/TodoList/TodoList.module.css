@@ -2,11 +2,6 @@
 .todolist {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
+  gap: 3rem;
   margin: 3rem 0;
-}
-
-.todolist > div {
-  background-color: rebeccapurple;
-  height: 12rem;
 }
