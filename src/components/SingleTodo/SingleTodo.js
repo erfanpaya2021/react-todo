@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 
 import { showModal } from "../../store/ui-slice";
 import { deleteTodo, setSelectedTodo } from "../../store/todos-slice";
