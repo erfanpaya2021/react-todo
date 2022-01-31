@@ -10,7 +10,7 @@ const useForm = (formInitialState, action, hideValue) => {
   const [formData, setFormData] = useState({
     ...formInitialState,
   });
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(true);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
