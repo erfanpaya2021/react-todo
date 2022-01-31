@@ -7,6 +7,14 @@
   margin: 3rem 0;
 }
 
+.notodo {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: clamp(1rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: #ccc;
+}
+
 @media (min-width: 700px) {
   .todolist {
     grid-template-columns: repeat(auto-fit, minmax(15rem, 18rem));

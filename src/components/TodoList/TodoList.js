@@ -11,9 +11,15 @@ const TodoList = () => {
   ));
 
   return (
-    <main className="container">
-      <ul className={classes.todolist}>{todoElements}</ul>
-    </main>
+    <>
+      {todoElements.length !== 0 ? (
+        <main className="container">
+          <ul className={classes.todolist}>{todoElements}</ul>
+        </main>
+      ) : (
+        <h2 className={classes.notodo}>Please add some todos!</h2>
+      )}
+    </>
   );
 };
 

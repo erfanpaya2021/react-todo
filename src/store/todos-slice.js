@@ -1,27 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const getTodos = () => {
+  if (localStorage.getItem("todos") === null) {
+    return [];
+  } else {
+    return JSON.parse(localStorage.getItem("todos"));
+  }
+};
+
+const setTodos = (state) => {
+  localStorage.setItem("todos", JSON.stringify(state.todos));
+};
+
 const initialState = {
-  todos: [
-    { id: "1", title: "JavaScript", description: "JavaScript Code" },
-    { id: "2", title: "React", description: "React Code" },
-    { id: "3", title: "Vue", description: "Vue Code" },
-    { id: "4", title: "Node", description: "Node Code" },
-  ],
+  todos: getTodos(),
   selectedTodo: null,
 };
 
 const todos = createSlice({
-  name: "ui",
+  name: "todos",
   initialState,
   reducers: {
     addTodo(state, action) {
       state.todos.push(action.payload);
+      setTodos(state);
     },
     deleteTodo(state, action) {
       const selectedItemIndex = state.todos.findIndex(
         (todo) => todo.id === action.payload,
       );
       state.todos.splice(selectedItemIndex, 1);
+      setTodos(state);
     },
     editTodo(state, action) {
       const selectedItemIndex = state.todos.findIndex(
@@ -30,6 +39,7 @@ const todos = createSlice({
 
       const updatedTask = { ...action.payload };
       state.todos[selectedItemIndex] = updatedTask;
+      setTodos(state);
     },
     setSelectedTodo(state, action) {
       state.selectedTodo = state.todos.find(
